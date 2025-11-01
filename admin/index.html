@@ -1062,8 +1062,8 @@
                                 <i class="fas fa-calendar-alt"></i> Years of Experience
                             </label>
                             <input type="number" id="statYearsExperience" value="15" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 15px;">
-                            <button class="btn btn-primary" onclick="saveStatistic('yearsExperience')" style="width: 100%;">
-                                <i class="fas fa-save"></i> Save Years Experience
+                            <button class="btn btn-primary" onclick="updateNow('stats')" style="width: 100%;">
+                                <i class="fas fa-bolt"></i> UPDATE NOW Years Experience
                             </button>
                         </div>
 
@@ -1073,8 +1073,8 @@
                                 <i class="fas fa-project-diagram"></i> Projects Completed
                             </label>
                             <input type="number" id="statProjectsCompleted" value="500" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 15px;">
-                            <button class="btn" onclick="saveStatistic('projectsCompleted')" style="width: 100%; background: var(--success);">
-                                <i class="fas fa-save"></i> Save Projects
+                            <button class="btn" onclick="updateNow('stats')" style="width: 100%; background: var(--success);">
+                                <i class="fas fa-bolt"></i> UPDATE NOW Projects
                             </button>
                         </div>
 
@@ -1084,8 +1084,8 @@
                                 <i class="fas fa-smile"></i> Happy Clients
                             </label>
                             <input type="number" id="statHappyClients" value="350" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 15px;">
-                            <button class="btn" onclick="saveStatistic('happyClients')" style="width: 100%; background: #17a2b8;">
-                                <i class="fas fa-save"></i> Save Clients
+                            <button class="btn" onclick="updateNow('stats')" style="width: 100%; background: #17a2b8;">
+                                <i class="fas fa-bolt"></i> UPDATE NOW Clients
                             </button>
                         </div>
 
@@ -1095,8 +1095,8 @@
                                 <i class="fas fa-clock"></i> Support Hours (24/7, etc.)
                             </label>
                             <input type="text" id="statSupportHours" value="24/7" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 15px;">
-                            <button class="btn" onclick="saveStatistic('supportHours')" style="width: 100%; background: #ffc107; color: #000;">
-                                <i class="fas fa-save"></i> Save Support Hours
+                            <button class="btn" onclick="updateNow('stats')" style="width: 100%; background: #ffc107; color: #000;">
+                                <i class="fas fa-bolt"></i> UPDATE NOW Support Hours
                             </button>
                         </div>
                     </div>
@@ -1158,7 +1158,7 @@
                         </label>
                         <input type="text" id="companyName" value="Cyberlogic IT" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
                         <button class="btn btn-primary" onclick="saveHeaderFooter('companyName')" style="width: auto;">
-                            <i class="fas fa-save"></i> Save Company Name
+                            <i class="fas fa-bolt"></i> UPDATE NOW Company Name
                         </button>
                     </div>
 
@@ -1169,7 +1169,7 @@
                         </label>
                         <input type="text" id="companyTagline" value="Custom Computer Systems & IT Consulting" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
                         <button class="btn btn-primary" onclick="saveHeaderFooter('companyTagline')" style="width: auto;">
-                            <i class="fas fa-save"></i> Save Tagline
+                            <i class="fas fa-bolt"></i> UPDATE NOW Tagline
                         </button>
                     </div>
                 </div>
@@ -1187,7 +1187,7 @@
                             </label>
                             <input type="email" id="contactEmail" value="support@cyberlogicit.com.au" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
                             <button class="btn btn-primary" onclick="saveHeaderFooter('contactEmail')" style="width: 100%;">
-                                <i class="fas fa-save"></i> Save Email
+                                <i class="fas fa-bolt"></i> UPDATE NOW Email
                             </button>
                         </div>
 
@@ -1198,7 +1198,7 @@
                             </label>
                             <input type="tel" id="contactPhone" value="(03) 9876 5432" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
                             <button class="btn btn-primary" onclick="saveHeaderFooter('contactPhone')" style="width: 100%;">
-                                <i class="fas fa-save"></i> Save Phone
+                                <i class="fas fa-bolt"></i> UPDATE NOW Phone
                             </button>
                         </div>
 
@@ -1209,7 +1209,7 @@
                             </label>
                             <input type="text" id="contactAddress" value="Melbourne, Victoria, Australia" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
                             <button class="btn btn-primary" onclick="saveHeaderFooter('contactAddress')" style="width: 100%;">
-                                <i class="fas fa-save"></i> Save Address
+                                <i class="fas fa-bolt"></i> UPDATE NOW Address
                             </button>
                         </div>
                     </div>
@@ -1228,7 +1228,7 @@
                             </label>
                             <input type="url" id="socialFacebook" placeholder="https://facebook.com/yourpage" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
                             <button class="btn btn-primary" onclick="saveHeaderFooter('socialFacebook')" style="width: 100%;">
-                                <i class="fas fa-save"></i> Save Facebook
+                                <i class="fas fa-bolt"></i> UPDATE NOW Facebook
                             </button>
                         </div>
 
@@ -1239,7 +1239,7 @@
                             </label>
                             <input type="url" id="socialTwitter" placeholder="https://twitter.com/yourhandle" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
                             <button class="btn btn-primary" onclick="saveHeaderFooter('socialTwitter')" style="width: 100%;">
-                                <i class="fas fa-save"></i> Save Twitter
+                                <i class="fas fa-bolt"></i> UPDATE NOW Twitter
                             </button>
                         </div>
 
@@ -1250,7 +1250,7 @@
                             </label>
                             <input type="url" id="socialLinkedIn" placeholder="https://linkedin.com/company/yourcompany" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 6px; margin-bottom: 15px;">
                             <button class="btn btn-primary" onclick="saveHeaderFooter('socialLinkedIn')" style="width: 100%;">
-                                <i class="fas fa-save"></i> Save LinkedIn
+                                <i class="fas fa-bolt"></i> UPDATE NOW LinkedIn
                             </button>
                         </div>
                     </div>
@@ -1282,7 +1282,7 @@
                     </div>
                     
                     <button class="btn btn-primary" onclick="saveFAQHeader()">
-                        <i class="fas fa-save"></i> Save Header
+                        <i class="fas fa-bolt"></i> UPDATE NOW Header
                     </button>
                 </div>
 
@@ -1327,7 +1327,7 @@
                     </div>
                     
                     <button class="btn btn-primary" onclick="saveProcessHeader()">
-                        <i class="fas fa-save"></i> Save Header
+                        <i class="fas fa-bolt"></i> UPDATE NOW Header
                     </button>
                 </div>
 
@@ -1368,7 +1368,7 @@
                     </div>
                     
                     <button class="btn btn-primary" onclick="saveWhyChooseHeader()">
-                        <i class="fas fa-save"></i> Save Header
+                        <i class="fas fa-bolt"></i> UPDATE NOW Header
                     </button>
                 </div>
 
@@ -1413,7 +1413,7 @@
                     </div>
                     
                     <button class="btn btn-primary" onclick="saveIndustriesHeader()">
-                        <i class="fas fa-save"></i> Save Header
+                        <i class="fas fa-bolt"></i> UPDATE NOW Header
                     </button>
                 </div>
 
@@ -1479,7 +1479,7 @@
                     </div>
 
                     <button class="btn btn-primary" onclick="saveAboutContent()" style="width: 100%;">
-                        <i class="fas fa-save"></i> Save About Us Content
+                        <i class="fas fa-bolt"></i> UPDATE NOW About Us Content
                     </button>
                 </div>
             </div>
@@ -1999,7 +1999,7 @@
                             <label>Years of Experience</label>
                             <input type="number" class="form-control" id="stat1Number" placeholder="15" value="15">
                             <button class="btn" onclick="saveStatistic('stat1')" style="margin-top: 10px;">
-                                <i class="fas fa-save"></i> Save
+                                <i class="fas fa-bolt"></i> UPDATE NOW
                             </button>
                         </div>
                         <div class="form-group">
@@ -2013,7 +2013,7 @@
                             <label>Projects Completed</label>
                             <input type="number" class="form-control" id="stat2Number" placeholder="500" value="500">
                             <button class="btn" onclick="saveStatistic('stat2')" style="margin-top: 10px;">
-                                <i class="fas fa-save"></i> Save
+                                <i class="fas fa-bolt"></i> UPDATE NOW
                             </button>
                         </div>
                         <div class="form-group">
@@ -2027,7 +2027,7 @@
                             <label>Happy Clients</label>
                             <input type="number" class="form-control" id="stat3Number" placeholder="200" value="200">
                             <button class="btn" onclick="saveStatistic('stat3')" style="margin-top: 10px;">
-                                <i class="fas fa-save"></i> Save
+                                <i class="fas fa-bolt"></i> UPDATE NOW
                             </button>
                         </div>
                         <div class="form-group">
@@ -2041,7 +2041,7 @@
                             <label>Support Hours</label>
                             <input type="number" class="form-control" id="stat4Number" placeholder="24" value="24">
                             <button class="btn" onclick="saveStatistic('stat4')" style="margin-top: 10px;">
-                                <i class="fas fa-save"></i> Save
+                                <i class="fas fa-bolt"></i> UPDATE NOW
                             </button>
                         </div>
                         <div class="form-group">
@@ -2082,7 +2082,7 @@
                         <small>Examples: fas fa-desktop, fas fa-server, fas fa-laptop-code</small>
                     </div>
                     <button class="btn-save" onclick="saveService('service1')">
-                        <i class="fas fa-save"></i> Save Service 1
+                        <i class="fas fa-bolt"></i> UPDATE NOW Service 1
                     </button>
                     <div class="save-status" id="service1SaveStatus"></div>
                 </div>
@@ -2103,7 +2103,7 @@
                         <input type="text" class="form-control" id="service2Icon" placeholder="fas fa-user-tie" value="fas fa-user-tie">
                     </div>
                     <button class="btn-save" onclick="saveService('service2')">
-                        <i class="fas fa-save"></i> Save Service 2
+                        <i class="fas fa-bolt"></i> UPDATE NOW Service 2
                     </button>
                     <div class="save-status" id="service2SaveStatus"></div>
                 </div>
@@ -2124,7 +2124,7 @@
                         <input type="text" class="form-control" id="service3Icon" placeholder="fas fa-network-wired" value="fas fa-network-wired">
                     </div>
                     <button class="btn-save" onclick="saveService('service3')">
-                        <i class="fas fa-save"></i> Save Service 3
+                        <i class="fas fa-bolt"></i> UPDATE NOW Service 3
                     </button>
                     <div class="save-status" id="service3SaveStatus"></div>
                 </div>
@@ -2145,7 +2145,7 @@
                         <input type="text" class="form-control" id="service4Icon" placeholder="fas fa-cloud" value="fas fa-cloud">
                     </div>
                     <button class="btn-save" onclick="saveService('service4')">
-                        <i class="fas fa-save"></i> Save Service 4
+                        <i class="fas fa-bolt"></i> UPDATE NOW Service 4
                     </button>
                     <div class="save-status" id="service4SaveStatus"></div>
                 </div>
@@ -2166,7 +2166,7 @@
                         <input type="text" class="form-control" id="service5Icon" placeholder="fas fa-shield-alt" value="fas fa-shield-alt">
                     </div>
                     <button class="btn-save" onclick="saveService('service5')">
-                        <i class="fas fa-save"></i> Save Service 5
+                        <i class="fas fa-bolt"></i> UPDATE NOW Service 5
                     </button>
                     <div class="save-status" id="service5SaveStatus"></div>
                 </div>
@@ -2187,7 +2187,7 @@
                         <input type="text" class="form-control" id="service6Icon" placeholder="fas fa-headset" value="fas fa-headset">
                     </div>
                     <button class="btn-save" onclick="saveService('service6')">
-                        <i class="fas fa-save"></i> Save Service 6
+                        <i class="fas fa-bolt"></i> UPDATE NOW Service 6
                     </button>
                     <div class="save-status" id="service6SaveStatus"></div>
                 </div>
@@ -2242,7 +2242,7 @@
                     </div>
 
                     <button class="btn-save" onclick="saveNavigation()">
-                        <i class="fas fa-save"></i> Save Navigation
+                        <i class="fas fa-bolt"></i> UPDATE NOW Navigation
                     </button>
                     <div class="save-status" id="navSaveStatus"></div>
                 </div>
@@ -2272,7 +2272,7 @@
                     </div>
 
                     <button class="btn-save" onclick="saveFooterContent()">
-                        <i class="fas fa-save"></i> Save Footer Content
+                        <i class="fas fa-bolt"></i> UPDATE NOW Footer Content
                     </button>
                     <div class="save-status" id="footerContentSaveStatus"></div>
                 </div>
@@ -2302,7 +2302,7 @@
                     </div>
 
                     <button class="btn-save" onclick="saveFooterContact()">
-                        <i class="fas fa-save"></i> Save Contact Info
+                        <i class="fas fa-bolt"></i> UPDATE NOW Contact Info
                     </button>
                     <div class="save-status" id="footerContactSaveStatus"></div>
                 </div>
@@ -2332,7 +2332,7 @@
                     </div>
 
                     <button class="btn-save" onclick="saveSocialMedia()">
-                        <i class="fas fa-save"></i> Save Social Media
+                        <i class="fas fa-bolt"></i> UPDATE NOW Social Media
                     </button>
                     <div class="save-status" id="socialSaveStatus"></div>
                 </div>
@@ -2495,7 +2495,7 @@
                     </div>
 
                     <button class="btn btn-primary" onclick="saveContentSection('conversation')" style="width: 100%;">
-                        <i class="fas fa-save"></i> Save Conversation Section
+                        <i class="fas fa-bolt"></i> UPDATE NOW Conversation Section
                     </button>
 
                     <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px;">
@@ -2536,7 +2536,7 @@
                     </div>
 
                     <button class="btn btn-primary" onclick="saveContentSection('about')" style="width: 100%;">
-                        <i class="fas fa-save"></i> Save About Section
+                        <i class="fas fa-bolt"></i> UPDATE NOW About Section
                     </button>
                 </div>
 
@@ -2563,7 +2563,7 @@
                     </div>
 
                     <button class="btn btn-primary" onclick="saveContentSection('servicesHeader')" style="width: 100%;">
-                        <i class="fas fa-save"></i> Save Services Header
+                        <i class="fas fa-bolt"></i> UPDATE NOW Services Header
                     </button>
 
                     <div style="margin-top: 20px; padding: 15px; background: #e7f3ff; border-left: 4px solid #2196F3; border-radius: 4px;">
@@ -3410,7 +3410,7 @@
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-save"></i> Save User
+                    <i class="fas fa-bolt"></i> UPDATE NOW User
                 </button>
             </form>
         </div>
@@ -5275,7 +5275,7 @@ Resent by Admin: ${new Date().toLocaleString('en-AU')}
                     </div>
                     
                     <button class="btn btn-primary" onclick="saveService(${index})" style="width: 100%;">
-                        <i class="fas fa-save"></i> Save This Service
+                        <i class="fas fa-bolt"></i> UPDATE NOW This Service
                     </button>
                 </div>
             `).join('');
@@ -5573,7 +5573,7 @@ Resent by Admin: ${new Date().toLocaleString('en-AU')}
                     </div>
                     
                     <button class="btn btn-primary" onclick="saveFAQ(${index})" style="width: 100%;">
-                        <i class="fas fa-save"></i> Save This FAQ
+                        <i class="fas fa-bolt"></i> UPDATE NOW This FAQ
                     </button>
                 </div>
             `).join('');
@@ -5644,7 +5644,7 @@ Resent by Admin: ${new Date().toLocaleString('en-AU')}
                     </div>
                     
                     <button class="btn btn-primary" onclick="saveProcessStep(${index})" style="width: 100%;">
-                        <i class="fas fa-save"></i> Save This Step
+                        <i class="fas fa-bolt"></i> UPDATE NOW This Step
                     </button>
                 </div>
             `).join('');
@@ -5721,7 +5721,7 @@ Resent by Admin: ${new Date().toLocaleString('en-AU')}
                     </div>
                     
                     <button class="btn btn-primary" onclick="saveBenefit(${index})" style="width: 100%;">
-                        <i class="fas fa-save"></i> Save This Benefit
+                        <i class="fas fa-bolt"></i> UPDATE NOW This Benefit
                     </button>
                 </div>
             `).join('');
@@ -5799,7 +5799,7 @@ Resent by Admin: ${new Date().toLocaleString('en-AU')}
                     </div>
                     
                     <button class="btn btn-primary" onclick="saveIndustry(${index})" style="width: 100%;">
-                        <i class="fas fa-save"></i> Save This Industry
+                        <i class="fas fa-bolt"></i> UPDATE NOW This Industry
                     </button>
                 </div>
             `).join('');
@@ -6017,5 +6017,53 @@ Resent by Admin: ${new Date().toLocaleString('en-AU')}
     
     <!-- Instant Content Updater - Updates HTML files directly -->
     <script src="../assets/js/instant-updater.js"></script>
+    
+    <!-- Working Update System v3.0 - Actually modifies and downloads HTML -->
+    <script src="../assets/js/working-updater.js"></script>
+    
+    <script>
+    // Override updateNow to use the working system
+    window.updateNow = function(section) {
+        let data = {};
+        
+        switch(section) {
+            case 'hero':
+                data = {
+                    title: document.getElementById('contentHeroHeading')?.value || '',
+                    subtitle: document.getElementById('contentHeroSubheading')?.value || '',
+                    primaryBtn: document.getElementById('contentHeroPrimaryBtn')?.value || '',
+                    secondaryBtn: document.getElementById('contentHeroSecondaryBtn')?.value || ''
+                };
+                break;
+            case 'contact':
+                data = {
+                    phone: document.getElementById('contentContactPhone')?.value || '',
+                    email: document.getElementById('contentContactEmail')?.value || '',
+                    address: document.getElementById('contentContactAddress')?.value || ''
+                };
+                break;
+            case 'about':
+                data = {
+                    tag: document.getElementById('aboutTag')?.value || '',
+                    title: document.getElementById('aboutTitle')?.value || '',
+                    subtitle: document.getElementById('aboutSubtitle')?.value || '',
+                    heading: document.getElementById('aboutHeading')?.value || '',
+                    paragraph1: document.getElementById('aboutPara1')?.value || '',
+                    paragraph2: document.getElementById('aboutPara2')?.value || ''
+                };
+                break;
+            case 'stats':
+                data = {
+                    years: document.getElementById('statYearsExperience')?.value || '15',
+                    systems: document.getElementById('statProjectsCompleted')?.value || '1000',
+                    clients: document.getElementById('statHappyClients')?.value || '500'
+                };
+                break;
+        }
+        
+        // Use the working update system
+        updateWebsiteNow(section, data);
+    };
+    </script>
 </body>
 </html>
