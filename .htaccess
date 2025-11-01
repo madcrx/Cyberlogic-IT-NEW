@@ -1,0 +1,273 @@
+# ═══════════════════════════════════════════════════════════════
+# CYBERLOGIC IT - SECURITY HARDENING
+# Protection against malware, phishing, SQL injection, DDoS
+# ═══════════════════════════════════════════════════════════════
+
+# ─────────────────────────────────────────────────────────────
+# 1. PROTECT AGAINST SQL INJECTION
+# ─────────────────────────────────────────────────────────────
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Block SQL injection patterns in URL
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} (union|select|insert|drop|delete|update|cast|create|char|convert|alter|declare|exec|script|concat|md5) [NC,OR]
+RewriteCond %{QUERY_STRING} (\.\./|\.\.) [OR]
+RewriteCond %{QUERY_STRING} (localhost|loopback|127\.0\.0\.1) [NC,OR]
+RewriteCond %{QUERY_STRING} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
+RewriteCond %{QUERY_STRING} proc/self/environ [NC,OR]
+RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|%3D) [OR]
+RewriteCond %{QUERY_STRING} base64_(en|de)code\(.*\) [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>|ê|"|;|\?|\*|=$).* [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*("|'|<|>|\|{||).* [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(%24&x).* [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(%0|%A|%B|%C|%D|%E|%F|127\.0).* [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(globals|encode|localhost|loopback).* [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(request|insert|union|declare|drop).* [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# Block suspicious request methods
+RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK|DEBUG) [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# Block executable file uploads
+RewriteCond %{REQUEST_URI} (\.php|\.exe|\.asp|\.cgi|\.pl)$ [NC]
+RewriteCond %{REQUEST_METHOD} POST [NC]
+RewriteRule ^(.*)$ - [F,L]
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────
+# 2. PROTECT AGAINST XSS (Cross-Site Scripting)
+# ─────────────────────────────────────────────────────────────
+
+<IfModule mod_headers.c>
+# Enable XSS protection
+Header set X-XSS-Protection "1; mode=block"
+
+# Prevent MIME type sniffing
+Header set X-Content-Type-Options "nosniff"
+
+# Prevent clickjacking attacks
+Header set X-Frame-Options "SAMEORIGIN"
+
+# Referrer Policy
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+# Content Security Policy (CSP)
+Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://formsubmit.co; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' https://formsubmit.co; frame-ancestors 'self'"
+
+# Permissions Policy
+Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+
+# Strict Transport Security (HSTS) - Force HTTPS
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────
+# 3. DDOS PROTECTION & RATE LIMITING
+# ─────────────────────────────────────────────────────────────
+
+<IfModule mod_reqtimeout.c>
+# Timeout for request headers
+RequestReadTimeout header=20-40,MinRate=500 body=20,MinRate=500
+</IfModule>
+
+<IfModule mod_evasive24.c>
+# DDoS protection settings (if mod_evasive is available)
+DOSHashTableSize 3097
+DOSPageCount 10
+DOSSiteCount 100
+DOSPageInterval 1
+DOSSiteInterval 1
+DOSBlockingPeriod 60
+</IfModule>
+
+# Limit request body size (prevent large POST attacks)
+<IfModule mod_security.c>
+SecRequestBodyLimit 10485760
+SecRequestBodyNoFilesLimit 131072
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────
+# 4. BLOCK MALICIOUS BOTS & USER AGENTS
+# ─────────────────────────────────────────────────────────────
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Block known malicious bots
+RewriteCond %{HTTP_USER_AGENT} (ahrefs|alexibot|majestic|mj12bot|rogerbot|semrush) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} (sqlmap|nikto|scan|acunetix|netsparker|openvas) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} (havij|libwww-perl|python-urllib|python-requests|wget|curl) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} (zmeu|masscan|nmap|backdoor|httrack|webstripper) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^(-|.*$) [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# Block suspicious referrers
+RewriteCond %{HTTP_REFERER} (poker|casino|viagra|cialis|pharma|pills) [NC,OR]
+RewriteCond %{HTTP_REFERER} (loan|credit|debt|insurance|mortgage) [NC,OR]
+RewriteCond %{HTTP_REFERER} (sex|xxx|adult|porn) [NC]
+RewriteRule ^(.*)$ - [F,L]
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────
+# 5. PROTECT SENSITIVE FILES
+# ─────────────────────────────────────────────────────────────
+
+# Deny access to sensitive files
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|orig|psd|sh|sql|sw[op])|~)$">
+    Require all denied
+</FilesMatch>
+
+# Protect .htaccess and .htpasswd
+<Files .htaccess>
+    Require all denied
+</Files>
+
+<Files .htpasswd>
+    Require all denied
+</Files>
+
+# Protect wp-config.php (if WordPress ever added)
+<Files wp-config.php>
+    Require all denied
+</Files>
+
+# Block access to hidden files and directories
+<IfModule mod_rewrite.c>
+RewriteCond %{SCRIPT_FILENAME} -d [OR]
+RewriteCond %{SCRIPT_FILENAME} -f
+RewriteRule "(^|/)\." - [F]
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────
+# 6. DISABLE DIRECTORY BROWSING
+# ─────────────────────────────────────────────────────────────
+
+Options -Indexes
+Options -ExecCGI
+Options -Includes
+
+# ─────────────────────────────────────────────────────────────
+# 7. DISABLE PHP EXECUTION IN UPLOADS
+# ─────────────────────────────────────────────────────────────
+
+<Directory "images">
+    <FilesMatch "\.php$">
+        Require all denied
+    </FilesMatch>
+</Directory>
+
+<Directory "uploads">
+    php_flag engine off
+    <FilesMatch "\.php$">
+        Require all denied
+    </FilesMatch>
+</Directory>
+
+# ─────────────────────────────────────────────────────────────
+# 8. PREVENT FILE INJECTION
+# ─────────────────────────────────────────────────────────────
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Block file injection
+RewriteCond %{REQUEST_METHOD} GET
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=https:// [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# Block shell scripts
+RewriteCond %{REQUEST_URI} (bash|c99|r57|shell|cmd)\.php [NC,OR]
+RewriteCond %{REQUEST_URI} (eval|assert|passthru|exec|system)\ *\( [NC]
+RewriteRule ^(.*)$ - [F,L]
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────
+# 9. PREVENT EMAIL INJECTION
+# ─────────────────────────────────────────────────────────────
+
+<IfModule mod_rewrite.c>
+RewriteCond %{REQUEST_METHOD} POST
+RewriteCond %{REQUEST_URI} (contact|form|mail|email)
+RewriteCond %{HTTP_REFERER} !^https?://.*\.yourdomain\.com [NC]
+RewriteRule ^(.*)$ - [F,L]
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────
+# 10. BLOCK WORDPRESS EXPLOITS (Prevention)
+# ─────────────────────────────────────────────────────────────
+
+<IfModule mod_rewrite.c>
+# Block WordPress XML-RPC attacks
+RewriteRule ^xmlrpc\.php$ - [F,L]
+
+# Block WordPress login brute force
+RewriteCond %{REQUEST_URI} ^(.*)?wp-login\.php(.*)$ [OR]
+RewriteCond %{REQUEST_URI} ^(.*)?wp-admin$
+RewriteCond %{REMOTE_ADDR} !^123\.123\.123\.123$ 
+RewriteRule ^(.*)$ - [R=403,L]
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────
+# 11. DISABLE SERVER SIGNATURE
+# ─────────────────────────────────────────────────────────────
+
+ServerSignature Off
+
+# ─────────────────────────────────────────────────────────────
+# 12. PREVENT HOTLINKING
+# ─────────────────────────────────────────────────────────────
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?yourdomain\.com [NC]
+RewriteRule \.(jpg|jpeg|png|gif|webp|svg)$ - [F,L]
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────
+# 13. GZIP COMPRESSION (Performance)
+# ─────────────────────────────────────────────────────────────
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────
+# 14. BROWSER CACHING (Performance)
+# ─────────────────────────────────────────────────────────────
+
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access plus 1 year"
+ExpiresByType image/jpeg "access plus 1 year"
+ExpiresByType image/gif "access plus 1 year"
+ExpiresByType image/png "access plus 1 year"
+ExpiresByType image/webp "access plus 1 year"
+ExpiresByType image/svg+xml "access plus 1 year"
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
+ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────
+# 15. BLOCK IP ADDRESSES (Add malicious IPs here)
+# ─────────────────────────────────────────────────────────────
+
+<IfModule mod_authz_core.c>
+# Example: Block specific IP addresses
+# Require not ip 123.456.789.000
+# Require not ip 987.654.321.000
+</IfModule>
+
+# ═══════════════════════════════════════════════════════════════
+# END SECURITY CONFIGURATION
+# ═══════════════════════════════════════════════════════════════
