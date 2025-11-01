@@ -1,0 +1,516 @@
+/* ===================================
+   Cyberlogic IT - Enhanced Responsive Styles
+   Advanced Media Queries & Device Testing
+   =================================== */
+
+/* ===== Base Responsive Foundation ===== */
+@media (max-width: 1440px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .container {
+        max-width: 1100px;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ===== Laptop/Desktop (1024px - 1279px) ===== */
+@media (max-width: 1279px) and (min-width: 1024px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    }
+}
+
+/* ===== iPad Pro / Large Tablets (1024px) ===== */
+@media (max-width: 1024px) {
+    :root {
+        --section-padding: 70px 0;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .about-image {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+/* ===== iPad / Tablets (768px - 1023px) ===== */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .industries-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .why-us-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-timeline {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hero-stats {
+        gap: 40px;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+}
+
+/* ===== Mobile Landscape / Small Tablets (768px) ===== */
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 60px 0;
+    }
+    
+    /* Navigation Mobile */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        padding: 80px 30px 30px;
+        box-shadow: var(--shadow-2xl);
+        transition: right var(--transition-base);
+        z-index: 1000;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+    
+    .nav-link {
+        color: var(--text-dark) !important;
+        display: block;
+        padding: 12px 0;
+        font-size: 1.1rem;
+    }
+    
+    .nav-toggle {
+        display: flex;
+        z-index: 1001;
+    }
+    
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+    
+    /* Hero Section Mobile */
+    .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .hero-stats {
+        gap: 40px;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    /* Services Mobile */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-card {
+        padding: 30px 24px;
+    }
+    
+    /* Industries Mobile */
+    .industries-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Why Us Mobile */
+    .why-us-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* Process Mobile */
+    .process-timeline {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Contact Form Mobile */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-form-container {
+        padding: 30px 20px;
+    }
+    
+    /* Footer Mobile */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    /* About Features Mobile */
+    .about-features {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Section Headers Mobile */
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* ===== iPhone 14 Pro Max / Large Phones (430px) ===== */
+@media (max-width: 430px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* ===== Standard Mobile (375px - 767px) ===== */
+@media (max-width: 480px) {
+    :root {
+        --section-padding: 50px 0;
+    }
+    
+    .container {
+        padding: 0 16px;
+    }
+    
+    .hero-container {
+        padding: 100px 16px 40px;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+        margin-bottom: 16px;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .service-card {
+        padding: 24px 20px;
+    }
+    
+    .service-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .service-icon i {
+        font-size: 1.75rem;
+    }
+    
+    .industry-card {
+        padding: 30px 20px;
+    }
+    
+    .industry-card i {
+        font-size: 2.5rem;
+    }
+    
+    .why-us-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .why-us-icon i {
+        font-size: 1.75rem;
+    }
+    
+    .process-step {
+        padding: 24px 16px;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+    
+    .faq-question {
+        padding: 20px 16px;
+    }
+    
+    .faq-question h4 {
+        font-size: 1rem;
+    }
+    
+    .faq-answer p {
+        padding: 0 16px 20px;
+    }
+    
+    .contact-item i {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+    
+    .btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+    }
+    
+    .scroll-top {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* ===== Small Mobile / iPhone SE (320px - 374px) ===== */
+@media (max-width: 374px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .service-card h3 {
+        font-size: 1.25rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== Print Styles ===== */
+@media print {
+    .navbar,
+    .scroll-top,
+    .hero-buttons,
+    .contact-form,
+    footer {
+        display: none;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+    }
+    
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+}
+
+/* ===== High DPI / Retina Displays ===== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Optimize for retina displays */
+    .logo-img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* ===== Reduced Motion Support ===== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ===== Dark Mode Support (Future Enhancement) ===== */
+@media (prefers-color-scheme: dark) {
+    /* Dark mode styles can be added here if needed */
+    /* Currently maintaining light theme for brand consistency */
+}
+
+/* ===== Landscape Orientation ===== */
+@media (max-width: 1024px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+        padding: 80px 0 40px;
+    }
+    
+    .hero-container {
+        padding: 60px 20px 40px;
+    }
+    
+    .hero-stats {
+        flex-direction: row;
+        gap: 40px;
+    }
+}
+
+/* ===== Touch Device Optimizations ===== */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase touch targets for mobile devices */
+    .btn {
+        min-height: 44px;
+        padding: 14px 32px;
+    }
+    
+    .nav-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .faq-question {
+        min-height: 60px;
+    }
+    
+    input, select, textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+/* ===== Specific Device Fixes ===== */
+
+/* iPhone X/11/12/13/14 notch support */
+@supports (padding: max(0px)) {
+    .navbar {
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+    }
+    
+    .hero-container,
+    .container {
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+    }
+}
+
+/* Android Chrome address bar compensation */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* ===== Browser-Specific Fixes ===== */
+
+/* Safari iOS specific */
+@supports (-webkit-touch-callout: none) {
+    .hero {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Firefox specific */
+@-moz-document url-prefix() {
+    .service-card {
+        scrollbar-width: thin;
+    }
+}
+
+/* Edge specific */
+@supports (-ms-ime-align: auto) {
+    .nav-menu {
+        scrollbar-width: thin;
+    }
+}

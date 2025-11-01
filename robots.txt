@@ -1,0 +1,21 @@
+# robots.txt for Cyberlogic IT
+# IT Consulting Melbourne | Custom Computer Systems
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /assets/js/
+Disallow: /assets/css/
+
+# Sitemap
+Sitemap: https://www.cyberlogicit.com.au/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot  
+Crawl-delay: 10
