@@ -38,39 +38,39 @@
                 try {
                     const doc = iframe.contentDocument || iframe.contentWindow.document;
                     
+                    let sectionName = '';
+                    
                     // Apply updates based on section
                     switch(section) {
                         case 'hero':
                             updateHeroInDOM(doc, data);
+                            sectionName = 'Hero Section';
                             break;
                         case 'about':
                             updateAboutInDOM(doc, data);
+                            sectionName = 'About Us';
                             break;
                         case 'stats':
                             updateStatsInDOM(doc, data);
+                            sectionName = 'Statistics';
                             break;
                         case 'contact':
                             updateContactInDOM(doc, data);
+                            sectionName = 'Contact Information';
                             break;
                         default:
                             console.log('Section not yet implemented:', section);
+                            sectionName = 'Content';
                     }
 
                     // Get the updated HTML
                     const updatedHTML = doc.documentElement.outerHTML;
                     
                     // Success!
-                    showUpdateNotification('✅ Website Updated! Changes are now live.', 'success');
+                    showUpdateNotification(`✅ ${sectionName} Updated Successfully!<br><small style="font-size:14px;opacity:0.9;">Download updated file and upload to your server.</small>`, 'success');
                     
                     // Offer to download the updated HTML file
-                    offerDownload(updatedHTML);
-                    
-                    // Refresh the website view
-                    setTimeout(() => {
-                        if (confirm('Website updated! Click OK to view the changes in a new tab.')) {
-                            window.open(websiteURL, '_blank');
-                        }
-                    }, 2000);
+                    offerDownload(updatedHTML, sectionName);
                     
                 } catch (err) {
                     console.error('Update error:', err);
@@ -157,22 +157,31 @@
     }
 
     function updateStatsInDOM(doc, data) {
-        // Update statistics
-        const stats = doc.querySelectorAll('.stat-item, .stats-item');
+        console.log('Updating stats with:', data);
         
-        stats.forEach(stat => {
-            const label = stat.querySelector('.stat-label, .stats-label')?.textContent.toLowerCase();
-            const number = stat.querySelector('.stat-number, .stats-number');
+        // Find all stat items
+        const statItems = doc.querySelectorAll('.stat-item');
+        
+        statItems.forEach(item => {
+            const label = item.querySelector('.stat-label');
+            const number = item.querySelector('.stat-number');
             
-            if (!number) return;
+            if (!label || !number) return;
             
-            if (label && label.includes('year') && data.years) {
+            const labelText = label.textContent.toLowerCase();
+            console.log('Found stat label:', labelText);
+            
+            // Match and update each stat
+            if (labelText.includes('year') && labelText.includes('experience') && data.years) {
+                console.log('Updating years to:', data.years);
                 number.textContent = data.years;
                 number.setAttribute('data-target', data.years);
-            } else if (label && label.includes('system') && data.systems) {
+            } else if ((labelText.includes('system') || labelText.includes('project')) && data.systems) {
+                console.log('Updating systems to:', data.systems);
                 number.textContent = data.systems;
                 number.setAttribute('data-target', data.systems);
-            } else if (label && label.includes('client') && data.clients) {
+            } else if (labelText.includes('client') && data.clients) {
+                console.log('Updating clients to:', data.clients);
                 number.textContent = data.clients;
                 number.setAttribute('data-target', data.clients);
             }
@@ -211,22 +220,32 @@
     // DOWNLOAD UPDATED HTML
     // ═══════════════════════════════════════════════════════════
 
-    function offerDownload(html) {
+    function offerDownload(html, sectionName) {
         const blob = new Blob([html], { type: 'text/html' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
         a.download = 'index-updated-' + Date.now() + '.html';
         
-        // Auto-download option
-        if (confirm('Download the updated HTML file to replace on your server?')) {
+        // Auto-download
+        setTimeout(() => {
             a.click();
             
-            // Show instructions
+            // Show instructions after download starts
             setTimeout(() => {
-                alert('📥 Downloaded!\n\nNext steps:\n1. Download completed\n2. Upload to your server\n3. Replace the old index.html\n4. ✅ Changes will be live!');
+                showUpdateNotification(
+                    `📥 ${sectionName} File Downloaded!<br><br>` +
+                    `<small style="font-size:13px;line-height:1.6;">` +
+                    `Next Steps:<br>` +
+                    `1. Find downloaded file<br>` +
+                    `2. Rename to "index.html"<br>` +
+                    `3. Upload to your server<br>` +
+                    `4. ✅ Changes will be live!` +
+                    `</small>`,
+                    'info'
+                );
             }, 1000);
-        }
+        }, 500);
         
         URL.revokeObjectURL(url);
     }
@@ -261,7 +280,8 @@
                     font-size: 16px;
                     font-weight: 600;
                     animation: slideIn 0.3s ease;
-                    max-width: 500px;
+                    max-width: 450px;
+                    line-height: 1.5;
                 }
                 .update-notification.success {
                     background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
@@ -271,6 +291,9 @@
                 }
                 .update-notification.loading {
                     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                }
+                .update-notification.info {
+                    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
                 }
                 @keyframes slideIn {
                     from {
@@ -289,7 +312,8 @@
         document.body.appendChild(notification);
         
         if (type !== 'loading') {
-            setTimeout(() => notification.remove(), 5000);
+            const duration = type === 'info' ? 8000 : 5000; // Info stays longer
+            setTimeout(() => notification.remove(), duration);
         }
     }
 

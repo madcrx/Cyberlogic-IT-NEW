@@ -181,48 +181,7 @@
     }
     </script>
     
-    <!-- Theme Loader -->
-    <script>
-        // Load custom theme if set
-        (function() {
-            const themeCSS = localStorage.getItem('websiteThemeCSS');
-            if (themeCSS) {
-                const style = document.createElement('style');
-                style.id = 'custom-theme';
-                style.textContent = themeCSS;
-                document.head.appendChild(style);
-            }
-        })();
-    </script>
-    
-    <!-- Custom Theme CSS - Managed by Admin Panel Theme Manager -->
-    <link rel="stylesheet" href="css/theme-custom.css" id="custom-theme-link">
-    
-    <!-- Auto-load Theme from Admin Panel -->
-    <script>
-        // Load active theme from localStorage (set by admin panel)
-        (function() {
-            const activeTheme = localStorage.getItem('activeTheme');
-            if (activeTheme) {
-                try {
-                    const themeData = JSON.parse(activeTheme);
-                    if (themeData.css && themeData.active) {
-                        // Remove existing custom theme
-                        const existingStyle = document.getElementById('admin-applied-theme');
-                        if (existingStyle) existingStyle.remove();
-                        
-                        // Inject theme CSS
-                        const styleElement = document.createElement('style');
-                        styleElement.id = 'admin-applied-theme';
-                        styleElement.textContent = themeData.css;
-                        document.head.appendChild(styleElement);
-                    }
-                } catch (e) {
-                    // Silently fail - theme not critical
-                }
-            }
-        })();
-    </script>
+
 </head>
                     <picture>
                         <source srcset="images/logo-cyberlogic.webp" type="image/webp">

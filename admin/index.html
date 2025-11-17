@@ -885,128 +885,20 @@
                 <div class="dashboard-grid">
                     
                     <!-- CONTENT MANAGEMENT GROUP -->
-                    <div class="dashboard-card group-card" onclick="toggleGroup('contentGroup')">
+                    <div class="dashboard-card" onclick="showPage('contentManagementHub')">
                         <i class="fas fa-edit"></i>
                         <h3>📝 Content Management</h3>
                         <p>Edit all website content sections - Hero, About, Services, FAQ, and more.</p>
-                        <i class="fas fa-chevron-down group-toggle"></i>
-                    </div>
-                    
-                    <div id="contentGroup" class="card-group" style="display: none;">
-                        <div class="dashboard-card sub-card" onclick="showPage('contentEditor')">
-                            <i class="fas fa-home"></i>
-                            <h3>Hero Section</h3>
-                            <p>Update homepage hero heading, subheading, and call-to-action buttons.</p>
-                        </div>
-                        
-                        <div class="dashboard-card sub-card" onclick="showPage('aboutEditor')">
-                            <i class="fas fa-info-circle"></i>
-                            <h3>About Us</h3>
-                            <p>Update company story, mission, vision, and team information.</p>
-                        </div>
-                        
-                        <div class="dashboard-card sub-card" onclick="showPage('servicesEditor')">
-                            <i class="fas fa-cogs"></i>
-                            <h3>Services</h3>
-                            <p>Add, edit, or remove services with descriptions and icons.</p>
-                        </div>
-                        
-                        <div class="dashboard-card sub-card" onclick="showPage('whyChooseEditor')">
-                            <i class="fas fa-star"></i>
-                            <h3>Why Choose Us</h3>
-                            <p>Update reasons and benefits of choosing your services.</p>
-                        </div>
-                        
-                        <div class="dashboard-card sub-card" onclick="showPage('processEditor')">
-                            <i class="fas fa-tasks"></i>
-                            <h3>Our Process</h3>
-                            <p>Edit process steps and workflow descriptions.</p>
-                        </div>
-                        
-                        <div class="dashboard-card sub-card" onclick="showPage('industriesEditor')">
-                            <i class="fas fa-industry"></i>
-                            <h3>Industries We Serve</h3>
-                            <p>Update industries and sectors you serve.</p>
-                        </div>
-                        
-                        <div class="dashboard-card sub-card" onclick="showPage('faqEditor')">
-                            <i class="fas fa-question-circle"></i>
-                            <h3>FAQ</h3>
-                            <p>Add, edit, or remove frequently asked questions.</p>
-                        </div>
-                        
-                        <div class="dashboard-card sub-card" onclick="showPage('statisticsEditor')">
-                            <i class="fas fa-chart-line"></i>
-                            <h3>Statistics</h3>
-                            <p>Update years, projects, clients, and support hours.</p>
-                        </div>
-                        
-                        <div class="dashboard-card sub-card" onclick="showPage('contentEditor')">
-                            <i class="fas fa-envelope"></i>
-                            <h3>Contact Information</h3>
-                            <p>Update contact details (auto-syncs everywhere).</p>
-                        </div>
-                        
-                        <div class="dashboard-card sub-card" onclick="showPage('headerFooterEditor')">
-                            <i class="fas fa-bars"></i>
-                            <h3>Header & Footer</h3>
-                            <p>Update navigation menu, footer, and social links.</p>
-                        </div>
                     </div>
 
                     <!-- TESTING & OPTIMISATION GROUP -->
-                    <div class="dashboard-card group-card" onclick="toggleGroup('testingGroup')">
+                    <div class="dashboard-card" onclick="showPage('testingHub')">
                         <i class="fas fa-vial"></i>
                         <h3>🧪 Testing & Optimisation</h3>
                         <p>Test performance, speed, SEO, and optimise your website.</p>
-                        <i class="fas fa-chevron-down group-toggle"></i>
-                    </div>
-                    
-                    <div id="testingGroup" class="card-group" style="display: none;">
-                        <div class="dashboard-card sub-card" onclick="showPage('websiteTesting')">
-                            <i class="fas fa-vial"></i>
-                            <h3>Website Testing</h3>
-                            <p>Test performance, speed, and browser compatibility.</p>
-                        </div>
-                        
-                        <div class="dashboard-card sub-card" onclick="showPage('websiteOptimization')">
-                            <i class="fas fa-gauge-high"></i>
-                            <h3>Website Optimisation</h3>
-                            <p>Optimise images, code, and loading speed.</p>
-                        </div>
-                        
-                        <div class="dashboard-card sub-card" onclick="showPage('seoTools')">
-                            <i class="fas fa-search-plus"></i>
-                            <h3>SEO Tools</h3>
-                            <p>Analyze SEO, keywords, and search visibility.</p>
-                        </div>
-                        
-                        <div class="dashboard-card sub-card" onclick="showPage('websiteTesting')">
-                            <i class="fas fa-mobile-alt"></i>
-                            <h3>Mobile Responsiveness</h3>
-                            <p>Test and optimize mobile experience.</p>
-                        </div>
-                        
-                        <div class="dashboard-card sub-card" onclick="showPage('websiteOptimization')">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <h3>Performance Analysis</h3>
-                            <p>Detailed performance metrics and insights.</p>
-                        </div>
-                        
-                        <div class="dashboard-card sub-card" onclick="showPage('websiteTesting')">
-                            <i class="fas fa-shield-alt"></i>
-                            <h3>Security Scan</h3>
-                            <p>Scan for security vulnerabilities and issues.</p>
-                        </div>
                     </div>
 
                     <!-- DESIGN & APPEARANCE -->
-                    <div class="dashboard-card" onclick="showPage('themeManager')">
-                        <i class="fas fa-palette"></i>
-                        <h3>🎨 Theme Manager</h3>
-                        <p>Change website color scheme and appearance instantly.</p>
-                    </div>
-
                     <div class="dashboard-card" onclick="showPage('imageUpload')">
                         <i class="fas fa-images"></i>
                         <h3>📷 Image Management</h3>
@@ -1036,6 +928,140 @@
                         <i class="fas fa-external-link-alt"></i>
                         <h3>🌐 View Website</h3>
                         <p>Open your live website to see your changes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Management Hub -->
+            <div class="page-content" id="contentManagementHub">
+                <div class="page-header">
+                    <h2>📝 Content Management</h2>
+                    <button class="btn-back" onclick="showPage('dashboard')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <p style="color: #666; font-size: 16px;">
+                        <i class="fas fa-info-circle" style="color: var(--primary);"></i>
+                        Select a content section below to edit. Each section has its own UPDATE NOW button for instant changes.
+                    </p>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-card" onclick="showPage('contentEditor')">
+                        <i class="fas fa-home"></i>
+                        <h3>Hero Section</h3>
+                        <p>Update homepage hero heading, subheading, and buttons.</p>
+                    </div>
+                    
+                    <div class="dashboard-card" onclick="showPage('aboutEditor')">
+                        <i class="fas fa-info-circle"></i>
+                        <h3>About Us</h3>
+                        <p>Update company story, mission, and information.</p>
+                    </div>
+                    
+                    <div class="dashboard-card" onclick="showPage('servicesEditor')">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Services</h3>
+                        <p>Add, edit, or remove services.</p>
+                    </div>
+                    
+                    <div class="dashboard-card" onclick="showPage('whyChooseEditor')">
+                        <i class="fas fa-star"></i>
+                        <h3>Why Choose Us</h3>
+                        <p>Update reasons and benefits.</p>
+                    </div>
+                    
+                    <div class="dashboard-card" onclick="showPage('processEditor')">
+                        <i class="fas fa-tasks"></i>
+                        <h3>Our Process</h3>
+                        <p>Edit process steps and workflow.</p>
+                    </div>
+                    
+                    <div class="dashboard-card" onclick="showPage('industriesEditor')">
+                        <i class="fas fa-industry"></i>
+                        <h3>Industries We Serve</h3>
+                        <p>Update industries and sectors.</p>
+                    </div>
+                    
+                    <div class="dashboard-card" onclick="showPage('faqEditor')">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>FAQ</h3>
+                        <p>Add, edit, or remove FAQs.</p>
+                    </div>
+                    
+                    <div class="dashboard-card" onclick="showPage('statisticsEditor')">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Statistics</h3>
+                        <p>Update years, projects, clients.</p>
+                    </div>
+                    
+                    <div class="dashboard-card" onclick="showPage('contentEditor')">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Contact Information</h3>
+                        <p>Update contact details.</p>
+                    </div>
+                    
+                    <div class="dashboard-card" onclick="showPage('headerFooterEditor')">
+                        <i class="fas fa-bars"></i>
+                        <h3>Header & Footer</h3>
+                        <p>Update navigation and footer.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testing & Optimisation Hub -->
+            <div class="page-content" id="testingHub">
+                <div class="page-header">
+                    <h2>🧪 Testing & Optimisation</h2>
+                    <button class="btn-back" onclick="showPage('dashboard')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
+                </div>
+
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <p style="color: #666; font-size: 16px;">
+                        <i class="fas fa-info-circle" style="color: var(--primary);"></i>
+                        Select a testing or optimisation tool below to analyze and improve your website.
+                    </p>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-card" onclick="showPage('websiteTesting')">
+                        <i class="fas fa-vial"></i>
+                        <h3>Website Testing</h3>
+                        <p>Test performance, speed, and compatibility.</p>
+                    </div>
+                    
+                    <div class="dashboard-card" onclick="showPage('websiteOptimization')">
+                        <i class="fas fa-gauge-high"></i>
+                        <h3>Website Optimisation</h3>
+                        <p>Optimise images, code, and loading speed.</p>
+                    </div>
+                    
+                    <div class="dashboard-card" onclick="showPage('seoTools')">
+                        <i class="fas fa-search-plus"></i>
+                        <h3>SEO Tools</h3>
+                        <p>Analyze SEO, keywords, and visibility.</p>
+                    </div>
+                    
+                    <div class="dashboard-card" onclick="showPage('websiteTesting')">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile Responsiveness</h3>
+                        <p>Test mobile experience.</p>
+                    </div>
+                    
+                    <div class="dashboard-card" onclick="showPage('websiteOptimization')">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h3>Performance Analysis</h3>
+                        <p>Detailed performance metrics.</p>
+                    </div>
+                    
+                    <div class="dashboard-card" onclick="showPage('websiteTesting')">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Security Scan</h3>
+                        <p>Scan for vulnerabilities.</p>
                     </div>
                 </div>
             </div>
